@@ -1,0 +1,4 @@
+name: qExposed
+version: '${project.version}'
+main: gg.quartzdev.qexposed.qExposed
+api-version: '1.20'
