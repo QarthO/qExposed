@@ -1,0 +1,10 @@
+name: qExposed
+version: '1.0-ALPHA'
+main: gg.quartzdev.qexposed.qExposed
+api-version: '1.20'
+dependencies:
+  server:
+    PlaceholderAPI:
+      load: BEFORE
+      required: false
+
