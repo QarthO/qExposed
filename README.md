@@ -32,4 +32,4 @@
 
 This plugin uses <a href="https://bstats.org/" target="_blank">bStats</a>. You can opt-out in the bStats config
 <p align="center">
-<a href="https://bstats.org/plugin/bukkit/qExposed/" target="_blank"><img alt="bStats qLodestones" src="https://bstats.org/signatures/bukkit/qExposed.svg"></a></p>
+<a href="https://bstats.org/plugin/bukkit/qExposed/" target="_blank"><img alt="bStats qExposed" src="https://bstats.org/signatures/bukkit/qExposed.svg"></a></p>
