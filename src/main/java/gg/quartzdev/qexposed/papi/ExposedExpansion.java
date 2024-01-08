@@ -4,6 +4,7 @@ import gg.quartzdev.qexposed.qExposed;
 import gg.quartzdev.qexposed.util.PdcUtil;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class ExposedExpansion extends PlaceholderExpansion {
@@ -30,12 +31,16 @@ public class ExposedExpansion extends PlaceholderExpansion {
     }
 
     @Override
-    public String onRequest(OfflinePlayer player, @NotNull String params){
+    public String onRequest(OfflinePlayer offlinePlayer, @NotNull String params){
+        if(offlinePlayer == null || offlinePlayer.getPlayer() == null) return null;
+        Player player = offlinePlayer.getPlayer();
         if(params.equalsIgnoreCase("murderer")){
-            return (player == null || player.getPlayer() == null) ? null : "" + PdcUtil.isMurderer(plugin.murdererKey, player.getPlayer());
+            return "" + PdcUtil.isMurderer(player);
         }
-
-
+        if(params.equalsIgnoreCase("duration")){
+            long durationAsMurder = PdcUtil.getDuration(player);
+            return durationAsMurder == -1 ? "null" : "" + PdcUtil.getDuration(player);
+        }
         return null;
     }
 }

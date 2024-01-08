@@ -19,6 +19,6 @@ public class PlayerKillListener implements Listener {
         Player player = event.getPlayer();
         if(player.getKiller() == null) return;
         Player killer = player.getKiller();
-        PdcUtil.makeMurderer(plugin.murdererKey, killer);
+        PdcUtil.makeMurderer(killer);
     }
 }
