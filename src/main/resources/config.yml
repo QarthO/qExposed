@@ -1,0 +1,15 @@
+###########################################################
+# +-----------------------------------------------------+ #
+# |                   qExposed Config                   | #
+# |   Source:   https://github.com/QarthO/qExposed/     | #
+# |   Download: https://modrinth.com/plugin/qExposed/   | #
+# |   Donate:   https://quartzdev.gg/donate/            | #
+# +-----------------------------------------------------+ #
+###########################################################
+schema-version: 1.0
+# Should this plugin check for updates
+# OP or players with 'qexposed.updates' will be notified when logging in
+check-updates: true;
+
+#  How long will a player be considered a murderer after killing someone (in seconds)
+murderer-duration: 86400

@@ -1,17 +1,20 @@
 package gg.quartzdev.qexposed;
 
-import gg.quartzdev.qexposed.listeners.PlayerKillListener;
+import gg.quartzdev.qexposed.listeners.PlayerListener;
 import gg.quartzdev.qexposed.papi.ExposedExpansion;
-import me.clip.placeholderapi.PlaceholderAPI;
+import gg.quartzdev.qexposed.storage.Confiq;
+import gg.quartzdev.qexposed.util.Loqqer;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
-import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.units.qual.C;
 
 public final class qExposed extends JavaPlugin {
 
-    static qExposed instance;
-
-    public NamespacedKey murdererKey;
+    private static qExposed instance;
+    public Loqqer logger;
+    public Confiq config;
+    public MurderManager murderManager;
 
     public static qExposed getInstance(){
         return instance;
@@ -20,8 +23,11 @@ public final class qExposed extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        this.murdererKey = new NamespacedKey(instance, "murderer");
+        this.logger = new Loqqer();
+        this.config = new Confiq();
+        this.murderManager = new MurderManager();
 
+        enableMetrics();
         registerEventHandlers();
         hookPAPI();
     }
@@ -41,7 +47,17 @@ public final class qExposed extends JavaPlugin {
 
     }
 
+    public void enableMetrics(){
+        int pluginId = 20694;
+        Metrics metrics = new Metrics(this, pluginId);
+    }
+
     public void registerEventHandlers(){
-        Bukkit.getPluginManager().registerEvents(new PlayerKillListener(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+    }
+
+    @SuppressWarnings("UnstableApiUsage")
+    public String getVersion(){
+        return instance.getPluginMeta().getVersion();
     }
 }

@@ -1,7 +1,7 @@
 package gg.quartzdev.qexposed.papi;
 
 import gg.quartzdev.qexposed.qExposed;
-import gg.quartzdev.qexposed.util.PdcUtil;
+import gg.quartzdev.qexposed.MurderManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -9,10 +9,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class ExposedExpansion extends PlaceholderExpansion {
 
-    private final qExposed plugin;
+    private final MurderManager murderManager;
 
     public ExposedExpansion(){
-        this.plugin = qExposed.getInstance();
+        this.murderManager = qExposed.getInstance().murderManager;
     }
 
     @Override
@@ -35,11 +35,11 @@ public class ExposedExpansion extends PlaceholderExpansion {
         if(offlinePlayer == null || offlinePlayer.getPlayer() == null) return null;
         Player player = offlinePlayer.getPlayer();
         if(params.equalsIgnoreCase("murderer")){
-            return "" + PdcUtil.isMurderer(player);
+            return "" + murderManager.is(player);
         }
         if(params.equalsIgnoreCase("duration")){
-            long durationAsMurder = PdcUtil.getDuration(player);
-            return durationAsMurder == -1 ? "null" : "" + PdcUtil.getDuration(player);
+            long durationAsMurder = murderManager.getDuration(player);
+            return durationAsMurder == -1 ? "null" : "" + murderManager.getDuration(player);
         }
         return null;
     }
